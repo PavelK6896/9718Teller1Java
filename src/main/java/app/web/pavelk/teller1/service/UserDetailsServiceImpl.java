@@ -16,6 +16,12 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService { // реалезуем сервис
 
     private final UserRepository userRepository;
+    private AccountService accountService;
+
+    @Autowired
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     @Autowired
     public UserDetailsServiceImpl(UserRepository userRepository) {
@@ -29,7 +35,9 @@ public class UserDetailsServiceImpl implements UserDetailsService { // реал�
         User user = userRepository.findByEmail(email).orElseThrow(() ->
                 new UsernameNotFoundException("User doesn't exists"));
 
-        System.out.println("user" + user);
+        System.out.println("-------------user" + user);
+
+        accountService.init(user);
 
         //создаем спрингового юзера
         return SecurityUser.fromUser(user);
