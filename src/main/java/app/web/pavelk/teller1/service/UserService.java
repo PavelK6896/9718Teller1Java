@@ -1,11 +1,14 @@
 package app.web.pavelk.teller1.service;
 
+import app.web.pavelk.teller1.model.account.Account;
 import app.web.pavelk.teller1.model.user.Role;
 import app.web.pavelk.teller1.model.user.User;
 import app.web.pavelk.teller1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -26,6 +29,12 @@ public class UserService {
 
     public String getName() {
         return "name";
+    }
+
+    public List<Account> getAccount(String name){
+        User user = userRepository.findByEmail(name).orElseThrow(() ->
+                new UsernameNotFoundException("User doesn't exists"));
+        return user.getAccount();
     }
 
 

@@ -11,9 +11,8 @@ create table users
 );
 
 insert into users (email, first_name, last_name, password, role, status)
-values ('1', 'Admin', 'Adminov', '$2y$12$xev0uCmEbGZ4auHkJxmEauyo4wddhir0qatdhObnoCsA9hhlM16J2', 'ADMIN', 'ACTIVE'),
-       ('2', 'User', 'Userov', '$2y$12$xev0uCmEbGZ4auHkJxmEauyo4wddhir0qatdhObnoCsA9hhlM16J2', 'USER', 'ACTIVE');
-
+values ('1', 'Admin', 'Adminov', '$2y$12$mZ43YcISK3cCFYwVxrRMD.ZpNPGq8ABR038sLAhvctoQ0LG584UVq', 'ADMIN', 'ACTIVE'),
+       ('2', 'User', 'Userov', '$2y$12$mZ43YcISK3cCFYwVxrRMD.ZpNPGq8ABR038sLAhvctoQ0LG584UVq', 'USER', 'ACTIVE');
 
 
 
