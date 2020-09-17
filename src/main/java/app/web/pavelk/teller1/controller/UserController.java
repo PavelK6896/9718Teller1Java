@@ -3,10 +3,7 @@ package app.web.pavelk.teller1.controller;
 import app.web.pavelk.teller1.model.account.Account;
 import app.web.pavelk.teller1.policy.UserPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -23,43 +20,36 @@ public class UserController {
     }
 
 
-    @GetMapping
+    @GetMapping//2
     public String name() {
         return userPolicy.getName();
     }
 
-    @GetMapping("/money")
+    @GetMapping("/money")//3
     public String getMoney() {
         return userPolicy.getMoney();
     }
 
-    @GetMapping("/money/add")
-    public boolean addMoney(@RequestBody int m) {
+    @GetMapping("/money/add")//4
+    public boolean addMoney(@RequestParam int m) {
         return userPolicy.setMoney(m);
     }
 
-
-    @GetMapping("/check")
+    @GetMapping("/check")//5
     public int checkBalance(Principal principal) {
         return userPolicy.checkBalance(principal.getName());
     }
 
-    @GetMapping("/payment")
+    @GetMapping("/payment")//6
     public boolean paymentBill(Principal principal) {
         return userPolicy.paymentBill(principal.getName());
     }
 
 
-    @GetMapping("/account")
+    @GetMapping("/account")//7
     public List<Account> getAccount(Principal principal) {
         return userPolicy.getAccount(principal.getName());
     }
-
-    @GetMapping("/account2")
-    public Account getAccount2() {
-        return userPolicy.getAccount2(1L).get();
-    }
-
 
 
 }

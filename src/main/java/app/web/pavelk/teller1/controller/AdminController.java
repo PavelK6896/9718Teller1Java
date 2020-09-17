@@ -20,24 +20,24 @@ public class AdminController {
         this.adminPolicy = adminPolicy;
     }
 
-    @GetMapping
+    @GetMapping//8
     public String name() {
         return adminPolicy.getName();
     }
 
 
-    @GetMapping("/video")
+    @GetMapping("/video")//9
     public String video() {
         return adminPolicy.getVideo();
     }
 
 
-    @GetMapping("/log")
+    @GetMapping("/log")//10
     public String log() {
         return adminPolicy.getLog();
     }
 
-    @GetMapping("/statistic")
+    @GetMapping("/statistic")//1
     public String statistic() {
         return adminPolicy.getStatistic();
     }
@@ -45,7 +45,7 @@ public class AdminController {
 
     //@Secured("ADMIN")
     //@PreAuthorize("hasAuthority('developers:write')")
-    @GetMapping("/role")
+    @GetMapping("/role")//12
     public String admin(Principal principal) {
         Role role = adminPolicy.getRole(principal.getName());
         return role.toString();
