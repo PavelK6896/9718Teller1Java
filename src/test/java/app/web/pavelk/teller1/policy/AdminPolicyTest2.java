@@ -1,4 +1,4 @@
-package app.web.pavelk.teller1;
+package app.web.pavelk.teller1.policy;
 
 
 import app.web.pavelk.teller1.model.user.Role;

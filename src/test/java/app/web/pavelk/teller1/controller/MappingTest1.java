@@ -1,4 +1,4 @@
-package app.web.pavelk.teller1;
+package app.web.pavelk.teller1.controller;
 
 
 import org.junit.jupiter.api.Test;
