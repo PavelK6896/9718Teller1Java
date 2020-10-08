@@ -65,7 +65,6 @@ public class CarService {
         final DateTimeFormatter DATE_TIME_F_DOTED = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
         String dateEnd = LocalDateTime.now().format(DATE_TIME_F_DOTED);
 
-
         System.out.println();
 
         System.out.println(carRepository.getCarDto("2010-06-22 19:10:25-07", dateEnd));
