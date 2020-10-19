@@ -2,9 +2,9 @@ create table cars
 (
     id     bigserial    not null,
     number varchar(250) not null,
-    code   varchar(250) not null,
-    active boolean      not null,
-    date   TIMESTAMP    not null,
+    code   varchar(250) ,
+    active boolean      ,
+    date   TIMESTAMP    ,
     primary key (id)
 );
 
