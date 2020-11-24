@@ -1,5 +1,8 @@
 package app.web.pavelk.teller1.service;
 
+import app.web.pavelk.teller1.model.car.Car;
+import app.web.pavelk.teller1.model.car.CarDto2;
+import app.web.pavelk.teller1.model.car.CarDto4;
 import app.web.pavelk.teller1.repository.CarRepository;
 import app.web.pavelk.teller1.repository.ReportsCustom;
 import lombok.AllArgsConstructor;
@@ -7,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -188,16 +195,62 @@ public class CarService {
 
 
         //16------------------------
-        reportsCustom.testQueryNativeRequestInsert();
-        reportsCustom.testQueryNativeRequestInsert();
-        reportsCustom.testQueryNativeRequestInsert();
+//        reportsCustom.testQueryNativeRequestInsert();
+//        reportsCustom.testQueryNativeRequestInsert();
+//        reportsCustom.testQueryNativeRequestInsert();
+//        reportsCustom.testQueryNativeRequest();
 
-
-        reportsCustom.testQueryNativeRequest();
+        //17--------
+//        reportsCustom.testQueryNativeRequest2();
 
         System.out.println("-----------------------------------");
         System.out.println();
-        System.out.println(carRepository.getCarLong());
+//        System.out.println(carRepository.getCarLong());
+
+        //------------interfere1
+//        carRepository.getCarLong().forEach(p -> {
+//            System.out.println(p.getNumber());
+//            System.out.println(p.getCode());
+//            System.out.println("-- " + p.getSumk());
+//        });
+//
+//        //-------------------------------------interfere2Optional1error
+//        Optional<List<CarDto2>> carLongO = carRepository.getCarLongO();
+//        if (carLongO.isPresent()) {
+//            List<CarDto2> carDto2s = carLongO.get();
+//            System.out.println(carDto2s.size());
+//            System.out.println("----------------");
+//        }
+//
+//        Optional<Integer> integer = carLongO.map(List::size);
+//        integer.ifPresent(System.out::println);
+//
+//        //-------------------------------------interfere2Optional2error
+//        try {
+//            List<CarDto2> carDto2s = carRepository.getCarLongO().map(l -> l.stream().collect(Collectors.toList()))
+//                    .orElseThrow(() -> new Exception("not found - "));
+//            System.out.println(carDto2s.size());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+
+        //-------------------------------------interfere3
+       carRepository.getCarLongD().forEach(p -> {
+           System.out.println("class " +  p.getCard().getClass().toString() + "p2= " + p.getCard().getName());
+           System.out.println("p1= " + p.getCode());
+       });
+
+
+
+//        List<CarDto2> carDto2s = carRepository.getCarLong().orElseThrow();
+//     carDto2s.forEach(l -> {
+//     // Optional.ofNullable(l.getCode()).ifPresent(System.out::println);
+////         System.out.println(l.getNumber());
+////         System.out.println(l.getSumk());
+////         Long sumk = l.getSumk();
+////         System.out.println(sumk);
+//     });
+
         System.out.println("-----------------------------------");
     }
 }

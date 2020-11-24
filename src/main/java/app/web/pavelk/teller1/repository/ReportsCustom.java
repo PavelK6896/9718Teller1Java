@@ -35,4 +35,21 @@ public class ReportsCustom {
         return null;
     }
 
+
+    public List<Object[]> testQueryNativeRequest2() {
+
+        List<Object[]> list = em.createNativeQuery(
+                "SELECT cs.number, " +
+                        "sum(case when cs.active = true then 1 else 0 end) " +
+                        "FROM cars as cs " +
+                        "group by cs.number"
+
+        ).getResultList();
+
+        list.forEach(o -> {
+            System.out.println(o[0]);
+            System.out.println(o[1]);
+        });
+        return list;
+    }
 }

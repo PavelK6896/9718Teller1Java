@@ -1,10 +1,14 @@
 package app.web.pavelk.teller1.repository;
 
 import app.web.pavelk.teller1.model.car.Car;
+import app.web.pavelk.teller1.model.car.CarDto2;
+import app.web.pavelk.teller1.model.car.CarDto4;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
@@ -38,12 +42,30 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 //    List<List> getCarDto();
     //----------------------
 
+    //------------------------interfere1
+    @Query("select c.number as number, c.code as code, count(c.code) as sumk " +
+            "from Car c group by c.code, c.number ")
+    List<CarDto2> getCarLong();
+
+    //-----------------------------------interfere2
+    @Query("select c.number as number, c.code as code, count(c.code) as sumk " +
+            "from Car c group by c.code, c.number ")
+    Optional<List<CarDto2>> getCarLongO();
+
+
+    //--------------------------------------interfere3
+
+    @Query("select c.code as code, c.number as card " +
+            "from Car c group by c.number, c.code ")
+    List<CarDto4> getCarLongD();
+
+
     //------натив get
-    @Query(value = "select " +
-            " sum(case when c.active = true then 1 else 0 end) " +
-            "from cars c group by c.code",
-            nativeQuery = true)
-    List<Long> getCarLong();
+//    @Query(value = "select " +
+//            " sum(case when c.active = true then 1 else 0 end) " +
+//            "from cars c group by c.code",
+//            nativeQuery = true)
+//    List<Long> getCarLong();
 
     //-----------------map
 //    @Query("select new map(" +

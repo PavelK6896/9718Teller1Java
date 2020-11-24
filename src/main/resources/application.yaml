@@ -12,10 +12,10 @@ spring:
       basePath: /api
 
   datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
-#    username: sa
-#    password:
+    #    driver-class-name: org.h2.Driver
+    #    url: jdbc:h2:mem:mydatabase;MODE=PostgreSQL
+    #    username: sa
+    #    password:
 
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/teller1
@@ -24,12 +24,13 @@ spring:
 
   jpa:
     show-sql: true
-#    generate-ddl: false
-#    hibernate:
-#      ddl-auto: create
+    #    generate-ddl: false
+    #    hibernate:
+    #      ddl-auto: create
     properties:
       hibernate:
-#        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+        #        dialect: org.hibernate.dialect.H2Dialect
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
         temp:
           use_jdbc_metadata_defaults: false
