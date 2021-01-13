@@ -253,4 +253,9 @@ public class CarService {
 
         System.out.println("-----------------------------------");
     }
+
+
+    public void createLog() {
+        System.out.println("-----------------------------------");
+    }
 }

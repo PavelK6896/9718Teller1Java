@@ -23,24 +23,29 @@ spring:
     password: 0
 
   jpa:
+    hibernate:
+#      ddl-auto: create
     show-sql: true
-    #    generate-ddl: false
-    #    hibernate:
-    #      ddl-auto: create
+
+#        generate-ddl: false
+
+#          ddl-auto: create
     properties:
       hibernate:
+        generate-ddl: false
+
         format_sql: true
         #        dialect: org.hibernate.dialect.H2Dialect
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
         temp:
           use_jdbc_metadata_defaults: false
 
-  thymeleaf:
-    encoding: UTF-8
-    prefix: file:src/main/resources/templates/
-    cache: false
-  resources:
-    static-locations: file:src/main/resources/static/
+#  thymeleaf:
+#    encoding: UTF-8
+#    prefix: file:src/main/resources/templates/
+#    cache: false
+#  resources:
+#    static-locations: file:src/main/resources/static/
 
   jackson:
     serialization:

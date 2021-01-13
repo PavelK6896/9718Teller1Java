@@ -27,3 +27,11 @@ values ('102', '10', false, '2016-06-22 19:10:25-07'),
        ('104', '10', true, '2016-06-22 19:10:25-07');
 
 
+
+create table car_log
+(
+    id  bigserial not null,
+    car text,
+    log varchar(255),
+    primary key (id)
+)
